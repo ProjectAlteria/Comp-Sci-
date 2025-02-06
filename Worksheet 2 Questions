@@ -1,0 +1,150 @@
+#Question-1 Anastasia Potapova
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.right_child = None
+        self.left_child = None
+
+
+def inorder(root_node):
+    current = root_node
+    if current is None:
+        return
+    inorder(current.left_child)
+    print(current.data)
+    inorder(current.right_child)
+
+
+def preorder(root_node):
+    current = root_node
+    if current is None:
+        return
+    print(current.data)
+    preorder(current.left_child)
+    preorder(current.right_child)
+
+
+def postorder(root_node):
+    current = root_node
+    if current is None:
+        return
+    postorder(current.left_child)
+    postorder(current.right_child)
+    print(current.data)
+
+
+n1 = Node("1")
+n2 = Node("2")
+n3 = Node("3")
+n1.right_child = n2#shows that the right child of n1 is n2
+n2.left_child = n3#shows that the left child of n2 is n3
+
+print('This prints the nodes using inorder traversal')
+inorder(n1)
+print('This prints the nodes using preorder traversal')
+preorder(n1)
+print('This prints the nodes using postorder traversal')
+postorder(n1)
+#if only the root node exists than this root node will be returned in every traversal
+
+#Question-2 Eman Anwar
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.right_child = None
+        self.left_child = None
+
+lst = []
+def inorder(root_node):
+    current = root_node
+    if current is None:
+        return
+    inorder(current.left_child)
+    print(current.data)
+    lst.append(current.data)
+    inorder(current.right_child)
+
+n1= Node('4')
+n2 = Node('2')
+n3 = Node('1')
+n4 = Node('3')
+n5 = Node('7')
+n6 = Node('6')
+n7 = Node('9')
+n1.right_child= n5
+n1.left_child = n2
+n2.right_child = n4
+n2.left_child= n3
+n5.right_child = n7
+n5.left_child = n6
+print('This prints the nodes using inorder traversal')
+inorder(n1)
+print(lst)
+lst.reverse()
+print('the inverted list is: ', lst)
+
+#Question-3 Charles Okeke
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left = left = None
+        self.right = right = None
+
+def inorder(root):
+    current = root
+    if current == None:
+        return
+
+    inorder(current.left)
+    print(current.value)
+    inorder(current.right)
+
+n1 = Node(1)
+n2 = Node(2)
+n3 = Node(2)
+n4 = Node(3)
+n5 = Node(4)
+n6 = Node(4)
+n7 = Node(3)
+
+n1.left = n2
+n1.right = n3
+n2.left = n4
+n2.right = n5
+n3.left = n6
+n3.right = n7
+
+inorder(n1)
+
+if n2.value == n3.value and n5.value == n6.value and n4.value == n7.value:
+    print("Symmetrical")
+else:
+    print("Asymmetrical")
+
+#Question-4 Sara de Amicis
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.right_child = None
+        self.left_child = None
+
+n1= Node(3)
+n2= Node(9)
+n3= Node(20)
+n4= Node(15)
+n5= Node(7)
+
+lst = [n1, n2, n3, n4, n5]
+
+n1.left_child = n2
+n1.right_child = n3
+n3.left_child= n4
+n3.right_child= n5
+
+leaves = []
+
+for n in lst:
+    if n.right_child is None and n.left_child is None:
+        leaves.append(n.data)
+
+print(sum(leaves))
